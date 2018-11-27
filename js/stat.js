@@ -51,4 +51,4 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillStyle = (names[i] === 'Вы') ? 'rgba(255,0, 0, 1)' : 'rgba(0, 0, 255, ' + Math.random().toFixed(3) + ')';
     ctx.fillRect(((HISTOGRAM_WIDTH + HISTOGRAM_GAP) * i) + HISTOGRAM_X, offsetGapY, HISTOGRAM_WIDTH, histogramHeight);
   }
-}
+};
