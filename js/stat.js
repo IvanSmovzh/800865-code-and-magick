@@ -42,13 +42,13 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов:', TEXT_PADDING_X, TEXT_OFFSET_Y + TEXT_OFFSET_PADDING_Y);
 
   for (var i = 0; i < names.length; i++) {
-    var OFFSET_GAP_X = (HISTOGRAM_GAP + HISTOGRAM_WIDTH) * i + HISTOGRAM_X; // смещение по Х - для имен и времени
-    // var OFFSET_GAP_Y = HISTOGRAM_Y + (HISTOGRAM_MAX_HEIGHT - histogramHeight); // то же самое, только по Y
     var histogramHeight = Math.round(times[i] / proportionValue);
+    var offsetGapX = (HISTOGRAM_GAP + HISTOGRAM_WIDTH) * i + HISTOGRAM_X; // смещение по Х - для имен и времени
+    var offsetGapY = HISTOGRAM_Y + (HISTOGRAM_MAX_HEIGHT - histogramHeight); // то же самое, только по Y
     ctx.fillStyle = 'black';
-    ctx.fillText(Math.round(times[i]), OFFSET_GAP_X, HISTOGRAM_Y + (HISTOGRAM_MAX_HEIGHT - histogramHeight) - 15);
-    ctx.fillText(names[i], OFFSET_GAP_X, HISTOGRAM_TEXT_Y);
+    ctx.fillText(Math.round(times[i]), offsetGapX, offsetGapY - 15);
+    ctx.fillText(names[i], offsetGapX, HISTOGRAM_TEXT_Y);
     ctx.fillStyle = (names[i] === 'Вы') ? 'rgba(255,0, 0, 1)' : 'rgba(0, 0, 255, ' + Math.random().toFixed(3) + ')';
-    ctx.fillRect(((HISTOGRAM_WIDTH + HISTOGRAM_GAP) * i) + HISTOGRAM_X, HISTOGRAM_Y + (HISTOGRAM_MAX_HEIGHT - histogramHeight), HISTOGRAM_WIDTH, histogramHeight);
+    ctx.fillRect(((HISTOGRAM_WIDTH + HISTOGRAM_GAP) * i) + HISTOGRAM_X, offsetGapY, HISTOGRAM_WIDTH, histogramHeight);
   }
 }
