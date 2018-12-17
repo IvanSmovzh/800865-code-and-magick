@@ -50,6 +50,7 @@ var characterPlayers = {
 
 };
 
+
 /**
  * возвращает случайное число в диапазоне от до
  * @param {number} min генерирует число ОТ
@@ -99,16 +100,14 @@ startUp();
 
 /**
  * если фокус на имени ввода то окно не закрывается
- * нажатие на сохранить отправляет форму так же через enter
  */
 var setup = document.querySelector('.setup');
 var setupOpenButton = document.querySelector('.setup-open');
 var setupCloseButton = document.querySelector('.setup-close');
-// var setupUserName = document.querySelector('.setup-user-name');
+var setupUserName = document.querySelector('.setup-user-name');
 var setupOpenIcon = setupOpenButton.querySelector('.setup-open-icon');
 var ENTER = 13;
-// var ESC = 27;
-
+var ESC = 27;
 var toggleClassList = function () {
   setup.classList.toggle('hidden');
 };
@@ -132,15 +131,7 @@ setupCloseButton.addEventListener('keydown', function (evt) {
   }
 });
 
-// setupUserName.addEventListener('keydown', function (evt) {
-//   if (setupUserName.activeElement) {
-//     return evt;
-//   } else {
-//     if (evt.keyCode === ESC) {
-//       setup.classList.add('hidden');
-//     }
-//   }
-// });
+
 
 
 // ИЗМЕНЕНИЕ ВНЕШНЕГО ВИДА ВОЛШЕБНИКА
@@ -148,7 +139,9 @@ setupCloseButton.addEventListener('keydown', function (evt) {
 var mantieWizardColor = document.querySelector('.wizard-coat');
 var eyesWizardColor = document.querySelector('.wizard-eyes');
 var fireballWizardColor = document.querySelector('.setup-fireball-wrap');
-
+var colorCoats = document.querySelector('.setup-wizard-appearance input[name="coat-color"]');
+var colorEyesWizard = document.querySelector('.setup-wizard-appearance input[name="eyes-color"]');
+var colorFireballWizard = document.querySelector('.setup-fireball-wrap input[name="fireball-color"]');
 // Возможные цвета мантии
 var colorMantie = [
   'rgb(101, 137, 164)',
@@ -177,28 +170,33 @@ var colorFireball = [
   '#e6e848'
 ];
 
+
 /**
  * Изменение цвета мантии по клику
  */
-// var setupWizardWrap = document.querySelector('.setup-wizard-wrap');
 // var mantieColor = '';
 mantieWizardColor.addEventListener('click', function () {
-  document.querySelector('.wizard-coat').style.fill = colorMantie[getRandInteger(0, colorMantie.length)];
+  var colorCoatWizard = colorMantie[getRandInteger(0, colorMantie.length)];
+  document.querySelector('.wizard-coat').style.fill = colorCoatWizard;
+  colorCoats.value = colorCoatWizard;
 }
 );
-// setupWizardWrap.querySelector('input[name="coat-color"]').value = mantieColor;
 
 
 /**
  * Изменение цвета глаз по клику
  */
 eyesWizardColor.addEventListener('click', function () {
-  document.querySelector('.wizard-eyes').style.fill = colorEyes[getRandInteger(0, colorEyes.length)];
+  var colorWizardEyes = colorEyes[getRandInteger(0, colorEyes.length)];
+  document.querySelector('.wizard-eyes').style.fill = colorWizardEyes;
+  colorEyesWizard.value = colorWizardEyes;
 });
 
 /**
  * Изменение цвета фаербола по клику
  */
 fireballWizardColor.addEventListener('click', function () {
-  document.querySelector('.setup-fireball-wrap').style.background = colorFireball[getRandInteger(0, colorFireball.length)];
+  var colorFireWizard = colorFireball[getRandInteger(0, colorFireball.length)];
+  document.querySelector('.setup-fireball-wrap').style.background = colorFireWizard;
+  colorFireballWizard.value = colorFireWizard;
 });
