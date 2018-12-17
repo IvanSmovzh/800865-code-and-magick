@@ -104,10 +104,10 @@ startUp();
 var setup = document.querySelector('.setup');
 var setupOpenButton = document.querySelector('.setup-open');
 var setupCloseButton = document.querySelector('.setup-close');
-var setupUserName = document.querySelector('.setup-user-name');
+// var setupUserName = document.querySelector('.setup-user-name');
 var setupOpenIcon = setupOpenButton.querySelector('.setup-open-icon');
 var ENTER = 13;
-var ESC = 27;
+// var ESC = 27;
 var toggleClassList = function () {
   setup.classList.toggle('hidden');
 };
@@ -130,9 +130,6 @@ setupCloseButton.addEventListener('keydown', function (evt) {
     setup.classList.add('hidden');
   }
 });
-
-
-
 
 // ИЗМЕНЕНИЕ ВНЕШНЕГО ВИДА ВОЛШЕБНИКА
 
