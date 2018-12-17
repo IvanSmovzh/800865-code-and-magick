@@ -96,6 +96,7 @@ var startUp = function () {
   renderWizards();
 };
 startUp();
+
 /**
  * если фокус на имени ввода то окно не закрывается
  * нажатие на сохранить отправляет форму так же через enter
@@ -103,10 +104,10 @@ startUp();
 var setup = document.querySelector('.setup');
 var setupOpenButton = document.querySelector('.setup-open');
 var setupCloseButton = document.querySelector('.setup-close');
-var setupUserName = document.querySelector('.setup-user-name');
+// var setupUserName = document.querySelector('.setup-user-name');
 var setupOpenIcon = setupOpenButton.querySelector('.setup-open-icon');
 var ENTER = 13;
-var ESC = 27;
+// var ESC = 27;
 
 var toggleClassList = function () {
   setup.classList.toggle('hidden');
@@ -123,6 +124,7 @@ setupOpenIcon.addEventListener('keydown', function (evt) {
     setup.classList.remove('hidden');
   }
 });
+
 
 setupCloseButton.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER) {
@@ -178,8 +180,8 @@ var colorFireball = [
 /**
  * Изменение цвета мантии по клику
  */
-var setupWizardWrap = document.querySelector('.setup-wizard-wrap');
-var mantieColor = '';
+// var setupWizardWrap = document.querySelector('.setup-wizard-wrap');
+// var mantieColor = '';
 mantieWizardColor.addEventListener('click', function () {
   document.querySelector('.wizard-coat').style.fill = colorMantie[getRandInteger(0, colorMantie.length)];
 }
