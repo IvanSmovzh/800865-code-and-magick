@@ -92,7 +92,6 @@ var renderWizards = function () {
 };
 
 var startUp = function () {
-  userDialog.classList.remove('hidden');
   setupSimilar.classList.remove('hidden');
   renderWizards();
 };
@@ -104,12 +103,13 @@ startUp();
 var setup = document.querySelector('.setup');
 var setupOpenButton = document.querySelector('.setup-open');
 var setupCloseButton = document.querySelector('.setup-close');
-// var setupUserName = document.querySelector('.setup-user-name');
+var setupUserName = document.querySelector('.setup-user-name');
 var setupOpenIcon = setupOpenButton.querySelector('.setup-open-icon');
 var ENTER = 13;
-// var ESC = 27;
+var ESC = 27;
 var toggleClassList = function () {
   setup.classList.toggle('hidden');
+  document.addEventListener('keydown', onClose);
 };
 
 setupCloseButton.addEventListener('click', toggleClassList);
@@ -117,10 +117,24 @@ setupCloseButton.setAttribute('tabindex', '0');
 setupOpenButton.addEventListener('click', toggleClassList);
 setupOpenIcon.setAttribute('tabindex', '0');
 
+var onClose = function (evt) {
+  if (evt.keyCode === ESC) {
+    setup.classList.add('hidden');
+    document.removeEventListener('keydown', onClose);
+  }
+};
+
+setupUserName.addEventListener('focus', function () {
+  document.removeEventListener('keydown', onClose);
+});
+
+setupUserName.addEventListener('blur', function () {
+  document.addEventListener('keydown', onClose);
+});
 
 setupOpenIcon.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER) {
-    setup.classList.remove('hidden');
+    toggleClassList();
   }
 });
 
